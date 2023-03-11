@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.math.BigInteger;
 
 @Data
 @Entity
@@ -18,7 +19,7 @@ public class SongMetadata implements BaseEntity {
     private String name;
     private String artist;
     private String album;
-    private String length;
+    private BigInteger length;
     private Long resourceId;
     private boolean deleted;
 }

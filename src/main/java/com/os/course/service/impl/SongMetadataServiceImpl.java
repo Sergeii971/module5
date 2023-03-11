@@ -8,6 +8,7 @@ import com.os.course.model.exception.MultipartFileException;
 import com.os.course.persistent.repository.SongMetadataRepository;
 import com.os.course.service.SongMetadataService;
 import com.os.course.util.Constant;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
+@Slf4j
 public class SongMetadataServiceImpl implements SongMetadataService {
     private final SongMetadataRepository songMetadataRepository;
     private final ModelMapper modelMapper;
@@ -50,7 +52,7 @@ public class SongMetadataServiceImpl implements SongMetadataService {
                 .map(songMetadataRepository::save)
                 .map(SongMetadata::getId)
                 .collect(Collectors.toList()));
-
+        log.info("delete files metadata with id" + deletedFilesDto.getIds());
         return deletedFilesDto;
     }
 
